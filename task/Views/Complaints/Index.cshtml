@@ -1,0 +1,49 @@
+﻿@model IEnumerable<task.Models.Complaint>
+
+
+@{
+    ViewBag.Title = "View All Registered Complaints";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Register New Complaint", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Complaints", FormMethod.Get))
+{
+    <p>
+        <input type="text" name="searchString" placeholder="Search by Customer Name" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Complaint ID</th>
+            <th>Customer Name</th>
+            <th>Phone</th>
+            <th>Work Category</th>
+            <th>Status</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ComplaintID</td>
+                <td>@item.CustomerName</td>
+                <td>@item.Phone</td>
+                <td>@item.WorkCategory</td>
+                <td>@item.Status</td>
+                <td>
+                    @Html.ActionLink("Update", "Edit", new { id = item.ComplaintID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

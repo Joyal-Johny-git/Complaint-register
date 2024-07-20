@@ -1,0 +1,54 @@
+﻿@model task.Models.Complaint
+
+
+@{ ViewBag.Title = "Register New Complaint"; }
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Complaints", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerName)
+        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CustomerName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Location)
+        @Html.TextBoxFor(model => model.Location, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Location)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address)
+        @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Address)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone)
+        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Phone)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.WorkDetails)
+        @Html.TextAreaFor(model => model.WorkDetails, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.WorkDetails)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.WorkCategory)
+        @Html.TextAreaFor(model => model.WorkCategory, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.WorkDetails)
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.WorkCategory)
+            @Html.DropDownListFor(model => model.WorkCategory, new SelectList(ViewBag.WorkCategories, "Value", "Text"), "Select Work Category", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.WorkCategory)*@
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}
